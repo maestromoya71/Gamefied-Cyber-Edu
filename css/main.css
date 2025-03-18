@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #252525;
+    background-color: brightpink;
     color: #ffffff;
     animation: fadeIn 1s;
     font-family: "Comfortaa", sans-serif;
@@ -67,8 +67,8 @@ img {
     width: 100%; 
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgb(142, 104, 104);
+    background-color: rgba(140, 94, 94, 0.9);
 }
   
 .modal-content {
@@ -278,7 +278,7 @@ input {
 
 .header {
     overflow: hidden;
-    background-color: #191919;
+    background-color: #936060;
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
@@ -421,7 +421,7 @@ textarea {
         right: 0;
         bottom: 0;
         z-index: 89;
-        background: #191919;
+        background: #b47979;
         color: white;
         list-style: none;
         padding-top: 20vh;
@@ -445,7 +445,7 @@ textarea {
     .bar1, .bar2, .bar3 {
         width: 35px;
         height: 5px;
-        background-color: #191919;
+        background-color: #e6dc6d;
         margin: 6px 0;
         transition: 0.4s;
     }
@@ -468,7 +468,7 @@ textarea {
 }
 
 .footer {
-    background-color: #191919;
+    background-color: #3e2727;
     color: #ffffff;
     text-align: center;
     text-decoration: none;
@@ -624,7 +624,7 @@ textarea {
 .pwchild {
     width: 49%;
     border-radius: 10px;
-    background-color: #212121;
+    background-color: #8c5f5f;
     padding: 20px 0px;
     box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgb(0 0 0 / 45%);
 }
@@ -1175,7 +1175,7 @@ td a:hover {
     flex-direction: column;
     text-align: center;
     animation: fadeIn 1.5s;
-    background-color: rgba(0,0,0, 0.7);
+    background-color: rgba(121, 87, 87, 0.7);
     border-radius: 10px;
     min-height: 50vh;
     overflow-wrap: anywhere;
