@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Safety Pull-and-Click Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Online Safety Pull-and-Click Game</h1>
+    <p>Drag or click on the objects to learn about online safety!</p>
+
+    <div class="game-container">
+        <!-- Level Selector -->
+        <div class="level-selector">
+            <button id="level1">Level 1: Passwords</button>
+            <button id="level2">Level 2: Strangers</button>
+            <button id="level3">Level 3: Personal Info</button>
+            <button id="level4">Level 4: Cyberbullying</button>
+            <button id="level5">Level 5: Phishing</button>
+            <button id="level6">Level 6: Safe Browsing</button>
+            <button id="level7">Level 7: Social Media</button>
+            <button id="level8">Level 8: Gaming Safety</button>
+        </div>
+
+        <!-- Score and Timer Display -->
+        <div class="game-info">
+            <p>Score: <span id="score">0</span></p>
+            <p>High Score: <span id="high-score">0</span></p>
+            <p>Time Left: <span id="timer">60</span>s</p>
+        </div>
+
+        <!-- Interactive Objects -->
+        <div class="objects" id="objects">
+            <!-- Objects will be dynamically added here based on the level -->
+        </div>
+
+        <!-- Power-Up Display -->
+        <div class="power-ups">
+            <p>Power-Ups:</p>
+            <button id="extra-time">Extra Time (+10s)</button>
+            <button id="double-points">Double Points (2x)</button>
+            <button id="freeze-time">Freeze Time (10s)</button>
+            <button id="shuffle-objects">Shuffle Objects</button>
+        </div>
+
+        <!-- Multiplayer Mode -->
+        <div class="multiplayer">
+            <p>Multiplayer Mode:</p>
+            <input type="text" id="player-name" placeholder="Enter your name">
+            <button id="start-multiplayer">Start Multiplayer</button>
+            <p id="multiplayer-feedback"></p>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="leaderboard">
+            <h2>Leaderboard</h2>
+            <ul id="leaderboard-list"></ul>
+        </div>
+
+        <!-- Customization -->
+        <div class="customization">
+            <h2>Customization</h2>
+            <label for="avatar">Choose Avatar:</label>
+            <select id="avatar">
+                <option value="👦">👦 Boy</option>
+                <option value="👧">👧 Girl</option>
+                <option value="🦸">🦸 Superhero</option>
+                <option value="🦹">🦹 Villain</option>
+                <option value="🐶">🐶 Dog</option>
+                <option value="🐱">🐱 Cat</option>
+                <option value="🤖">🤖 Robot</option>
+                <option value="🦄">🦄 Unicorn</option>
+            </select>
+            <label for="theme">Choose Theme:</label>
+            <select id="theme">
+                <option value="light">Light Theme</option>
+                <option value="dark">Dark Theme</option>
+                <option value="colorful">Colorful Theme</option>
+                <option value="halloween">Halloween Theme</option>
+                <option value="christmas">Christmas Theme</option>
+                <option value="summer">Summer Theme</option>
+            </select>
+        </div>
+    </div>
+
+    <p id="feedback"></p>
+
+    <!-- Sound Effects -->
+    <audio id="correctSound" src="correct.mp3"></audio>
+    <audio id="wrongSound" src="wrong.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

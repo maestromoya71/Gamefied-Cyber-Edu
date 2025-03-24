@@ -1,0 +1,247 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.level-selector {
+    margin-bottom: 20px;
+}
+
+.level-selector button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}
+
+.level-selector button:hover {
+    background-color: #0056b3;
+}
+
+.game-info {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.objects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.object {
+    width: 100px;
+    height: 100px;
+    background-color: #ffcc00;
+    border: 2px solid #cc9900;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.object.dragging {
+    opacity: 0.7;
+    transform: scale(1.1);
+}
+
+.object.clicked {
+    animation: bounce 0.5s ease;
+}
+
+.object span {
+    font-size: 2rem;
+}
+
+.object .info {
+    display: none;
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.object.clicked .info {
+    display: block;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #ffcc00; }
+    50% { box-shadow: 0 0 20px #ffcc00; }
+    100% { box-shadow: 0 0 5px #ffcc00; }
+}
+
+.object.glow {
+    animation: glow 1s infinite;
+}
+
+@keyframes dragAnimation {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.object.dragging {
+    animation: dragAnimation 0.5s infinite;
+}
+
+.power-ups {
+    margin-top: 20px;
+}
+
+.power-ups button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+}
+
+.power-ups button:hover {
+    background-color: #218838;
+}
+
+.multiplayer {
+    margin-top: 20px;
+}
+
+.multiplayer input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.multiplayer button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: white;
+}
+
+.multiplayer button:hover {
+    background-color: #c82333;
+}
+
+.leaderboard {
+    margin-top: 20px;
+}
+
+.leaderboard h2 {
+    color: #333;
+}
+
+.leaderboard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.leaderboard li {
+    background-color: #fff;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.customization {
+    margin-top: 20px;
+}
+
+.customization h2 {
+    color: #333;
+}
+
+.customization label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.customization select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Themes */
+body.light {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body.dark {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+body.colorful {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+body.halloween {
+    background-color: #ff6600;
+    color: #000;
+}
+
+body.christmas {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+body.summer {
+    background-color: #00ccff;
+    color: #333;
+}
