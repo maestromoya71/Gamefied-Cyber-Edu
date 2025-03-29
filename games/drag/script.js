@@ -28,10 +28,8 @@ let isTimeFrozen = false;
 let multiplayerMode = false;
 let players = JSON.parse(localStorage.getItem('players')) || [];
 
-// Update high score display
 highScoreDisplay.textContent = highScore;
 
-// Define objects for each level
 const levels = {
     1: [
         { emoji: "🔒", info: "Use strong passwords!", points: 10 },
@@ -68,9 +66,8 @@ const levels = {
     ],
 };
 
-// Load objects for the current level
 function loadLevel(level) {
-    objectsContainer.innerHTML = ''; // Clear previous objects
+    objectsContainer.innerHTML = ''; 
     levels[level].forEach(obj => {
         const div = document.createElement('div');
         div.className = 'object';
@@ -80,7 +77,6 @@ function loadLevel(level) {
         objectsContainer.appendChild(div);
     });
 
-    // Add event listeners to new objects
     const objects = document.querySelectorAll('.object');
     objects.forEach(object => {
         object.addEventListener('dragstart', dragStart);
@@ -88,15 +84,14 @@ function loadLevel(level) {
         object.addEventListener('click', onClick);
     });
 
-    feedback.textContent = ''; // Clear feedback
+    feedback.textContent = '';
     startTimer();
 }
 
-// Drag functions
 function dragStart(e) {
     this.classList.add('dragging');
     setTimeout(() => this.style.opacity = '0.7', 0);
-    e.dataTransfer.setData('text/plain', this.innerHTML); // Required for Firefox
+    e.dataTransfer.setData('text/plain', this.innerHTML);
 }
 
 function dragEnd() {
@@ -104,32 +99,27 @@ function dragEnd() {
     this.classList.remove('dragging');
 }
 
-// Click function
 function onClick() {
     this.classList.add('clicked', 'glow');
     let points = parseInt(this.dataset.points);
-    if (isDoublePointsActive) points *= 2; // Apply double points
+    if (isDoublePointsActive) points *= 2;
     score += points;
     scoreDisplay.textContent = score;
     feedback.textContent = `Great job! You earned ${points} points!`;
     feedback.style.color = "green";
     correctSound.play();
 
-    // Update high score
     if (score > highScore) {
         highScore = score;
         highScoreDisplay.textContent = highScore;
         localStorage.setItem('highScore', highScore);
     }
 
-    // Remove glow animation after 2 seconds
     setTimeout(() => this.classList.remove('glow'), 2000);
 
-    // Check if level is complete
     checkLevelCompletion();
 }
 
-// Check if all objects are correctly placed
 function checkLevelCompletion() {
     const goodItems = document.querySelectorAll('#good .object');
     const badItems = document.querySelectorAll('#bad .object');
@@ -138,14 +128,12 @@ function checkLevelCompletion() {
     if (goodItems.length + badItems.length === totalObjects) {
         let correct = true;
 
-        // Check "Good" box
         goodItems.forEach(item => {
             if (item.dataset.correct !== "good") {
                 correct = false;
             }
         });
 
-        // Check "Bad" box
         badItems.forEach(item => {
             if (item.dataset.correct !== "bad") {
                 correct = false;
@@ -163,16 +151,15 @@ function checkLevelCompletion() {
                     feedback.textContent = "Congratulations! You've completed all levels!";
                     feedback.style.color = "blue";
                 }
-            }, 2000); // Wait 2 seconds before moving to the next level
+            }, 2000); 
         }
     }
 }
 
-// Timer function
 function startTimer() {
     timeLeft = 60;
     timerDisplay.textContent = timeLeft;
-    clearInterval(timer); // Clear previous timer
+    clearInterval(timer); 
     timer = setInterval(() => {
         if (!isTimeFrozen) {
             timeLeft--;
@@ -186,7 +173,7 @@ function startTimer() {
     }, 1000);
 }
 
-// Power-Up: Extra Time
+
 extraTimeButton.addEventListener('click', () => {
     timeLeft += 10;
     timerDisplay.textContent = timeLeft;
@@ -194,7 +181,6 @@ extraTimeButton.addEventListener('click', () => {
     feedback.style.color = "blue";
 });
 
-// Power-Up: Double Points
 doublePointsButton.addEventListener('click', () => {
     isDoublePointsActive = true;
     feedback.textContent = "Double points activated for the next 3 clicks!";
@@ -203,10 +189,9 @@ doublePointsButton.addEventListener('click', () => {
         isDoublePointsActive = false;
         feedback.textContent = "Double points deactivated.";
         feedback.style.color = "red";
-    }, 30000); // 30 seconds
+    }, 30000); 
 });
 
-// Power-Up: Freeze Time
 freezeTimeButton.addEventListener('click', () => {
     isTimeFrozen = true;
     feedback.textContent = "Time frozen for 10 seconds!";
@@ -215,10 +200,9 @@ freezeTimeButton.addEventListener('click', () => {
         isTimeFrozen = false;
         feedback.textContent = "Time unfrozen.";
         feedback.style.color = "red";
-    }, 10000); // 10 seconds
+    }, 10000); 
 });
 
-// Power-Up: Shuffle Objects
 shuffleObjectsButton.addEventListener('click', () => {
     const objectsArray = Array.from(objectsContainer.children);
     objectsArray.sort(() => Math.random() - 0.5);
@@ -228,7 +212,6 @@ shuffleObjectsButton.addEventListener('click', () => {
     feedback.style.color = "blue";
 });
 
-// Multiplayer Mode
 startMultiplayerButton.addEventListener('click', () => {
     const playerName = playerNameInput.value.trim();
     if (playerName) {
@@ -244,10 +227,9 @@ startMultiplayerButton.addEventListener('click', () => {
     }
 });
 
-// Update Leaderboard
 function updateLeaderboard() {
     leaderboardList.innerHTML = '';
-    players.sort((a, b) => b.score - a.score); // Sort by score (descending)
+    players.sort((a, b) => b.score - a.score); 
     players.forEach(player => {
         const li = document.createElement('li');
         li.textContent = `${player.name}: ${player.score} points`;
@@ -255,26 +237,22 @@ function updateLeaderboard() {
     });
 }
 
-// Save Leaderboard to localStorage
 function saveLeaderboard() {
     localStorage.setItem('players', JSON.stringify(players));
 }
 
-// Load Leaderboard from localStorage
 function loadLeaderboard() {
     const savedPlayers = JSON.parse(localStorage.getItem('players')) || [];
     players = savedPlayers;
     updateLeaderboard();
 }
 
-// Customization: Avatar
 avatarSelect.addEventListener('change', (e) => {
     const avatar = e.target.value;
     feedback.textContent = `Avatar changed to ${avatar}!`;
     feedback.style.color = "blue";
 });
 
-// Customization: Theme
 themeSelect.addEventListener('change', (e) => {
     const theme = e.target.value;
     document.body.className = theme;
@@ -282,7 +260,6 @@ themeSelect.addEventListener('change', (e) => {
     feedback.style.color = "blue";
 });
 
-// Allow dropping
 document.addEventListener('dragover', e => {
     e.preventDefault();
 });
@@ -293,13 +270,10 @@ document.addEventListener('drop', e => {
     feedback.style.color = "blue";
 });
 
-// Load Level 1 by default
 loadLevel(currentLevel);
 
-// Load Leaderboard on page load
 loadLeaderboard();
 
-// Add event listeners to level buttons
 levelButtons.forEach(button => {
     button.addEventListener('click', () => {
         currentLevel = parseInt(button.textContent.replace("Level ", "").charAt(0));

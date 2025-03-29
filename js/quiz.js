@@ -654,9 +654,9 @@ function checkAnswer() {
     }
     if (selectedAnswer === quizQuestions[currentQuestion].correctAnswer) {
         score++;
-        document.getElementById("feedback").innerHTML = "<h3 class='accent'>Correct!</h3>";
+        document.getElementById("feedback").innerHTML = "<h3 class='accent'>Correct👌!</h3>";
     } else {
-        document.getElementById("feedback").innerHTML = `<h3 class='accentIncorrect'>Incorrect! ${quizQuestions[currentQuestion].feedback[selectedAnswer]}</h3>`;
+        document.getElementById("feedback").innerHTML = `<h3 class='accentIncorrect'>Incorrect👎! ${quizQuestions[currentQuestion].feedback[selectedAnswer]}</h3>`;
     }
     var x = document.getElementsByClassName("checkbox");
     var i;
@@ -679,7 +679,7 @@ function nextQuestion() {
     selectedAnswer = '';
     if (currentQuestion === quizQuestions.length) {
         document.getElementById("quiz").innerHTML = "";
-        document.getElementById("score").innerHTML = `<h2 class='accent'>Your score: ${Math.round(score / quizQuestions.length * 100)}%</h2>`;
+        document.getElementById("score").innerHTML = `<h2 class='accent'>Your score: ${Math.round(score / quizQuestions.length * 100)}%🥳 🎉✨</h2>`;
         document.getElementById("redo").innerHTML = `<a class="retake" href="javascript:window.location.href=window.location.href">Take the quiz again?</a>`;
         document.getElementById("user-feedback").innerHTML = `<a class="retake" href="/feedback">Give Feedback?</a>`;
         
